@@ -4,6 +4,8 @@ import br.edu.infnet.app.dominio.Administrativo;
 import br.edu.infnet.app.dominio.Empresa;
 import br.edu.infnet.app.dominio.Funcionario;
 import br.edu.infnet.app.dominio.Programador;
+import br.edu.infnet.app.exception.FaturamentoInvalidoException;
+import br.edu.infnet.app.exception.NomeIncompletoException;
 
 public class EmpresaTeste {
 
@@ -31,13 +33,68 @@ public class EmpresaTeste {
 		empresaFuncs[2] = a3;
 		empresaFuncs[3] = p2;
 		
-		Empresa empresaElberth = new Empresa();
-		empresaElberth.setNome("empresa elberth moraes");
-		empresaElberth.setFuncionarios(empresaFuncs);
-		empresaElberth.imprimir();
 		
-		Empresa infnet = new Empresa();
-		infnet.setNome("instituto infnet java");
-		infnet.imprimir();
+		try {
+			Empresa empresaElberth = new Empresa();
+			empresaElberth.setNome("empresa elberth moraes");
+			empresaElberth.setFaturamento(500);
+			empresaElberth.setFuncionarios(empresaFuncs);
+			empresaElberth.imprimir();
+		} catch (NomeIncompletoException | FaturamentoInvalidoException e) {
+			System.out.println("[ERROR] " + e.getMessage());
+		}
+
+		try {
+			Empresa maria = new Empresa();
+			maria.setFaturamento(100);
+			maria.imprimir();
+		} catch (NomeIncompletoException | FaturamentoInvalidoException e) {
+			System.out.println("[ERROR] " + e.getMessage());
+		}	
+		
+		try {
+			Empresa infnet = new Empresa();
+			infnet.setNome("instituto Infnet");
+			infnet.setFaturamento(-100);
+			infnet.imprimir();
+		} catch (NomeIncompletoException | FaturamentoInvalidoException e) {
+			System.out.println("[ERROR] " + e.getMessage());
+		}
+		
+		
+		try {
+			Empresa infnet = new Empresa();
+			infnet.setNome("instituto infnet Zerado");
+			infnet.setFaturamento(0);
+			infnet.imprimir();
+		} catch (NomeIncompletoException | FaturamentoInvalidoException e) {
+			System.out.println("[ERROR] " + e.getMessage());
+		}
+		
+		try {
+			Empresa infnet = new Empresa();
+			infnet.setNome("instituto infnet Nulo");
+			infnet.imprimir();
+		} catch (NomeIncompletoException e) {
+			System.out.println("[ERROR] " + e.getMessage());
+		}
+		
+		try {
+			Empresa joao = new Empresa();
+			joao.setNome(null);
+			joao.setFaturamento(200);
+			joao.imprimir();
+		} catch (NomeIncompletoException | FaturamentoInvalidoException e) {
+			System.out.println("[ERROR] " + e.getMessage());
+		}
+		
+		try {
+			Empresa zezinho = new Empresa();
+			zezinho.setNome("Instituto");
+			zezinho.setFaturamento(400);
+			zezinho.imprimir();
+		} catch (NomeIncompletoException | FaturamentoInvalidoException e) {
+			System.out.println("[ERROR] " + e.getMessage());
+		}
 	}
 }
