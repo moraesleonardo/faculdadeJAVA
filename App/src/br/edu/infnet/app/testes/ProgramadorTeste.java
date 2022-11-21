@@ -7,7 +7,7 @@ public class ProgramadorTeste {
 	public static void main(String[] args) {
 
 		Programador p1 = new Programador("Huguinho", 20);
-		p1.setDevFull(false);
+		//p1.setDevFull(false);
 		p1.setLinguagem("Java");
 		p1.setSalario(1000);
 		p1.imprimir();
