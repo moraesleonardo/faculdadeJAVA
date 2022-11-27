@@ -129,3 +129,8 @@ public class TP2_entrega {
 		in.close();
 	}
 }
+
+
+//public String toString(){
+//	return super.toString() + ";" + faculdade + ";" + periodo;
+//	}

@@ -7,6 +7,7 @@ public class AdministrativoTeste {
 	public static void main(String[] args) {
 
 		Administrativo a1 = new Administrativo();
+		a1.setNome("nome");
 		a1.setIdade(44);
 		a1.setSalario(1000);
 		a1.setBonus(200);
