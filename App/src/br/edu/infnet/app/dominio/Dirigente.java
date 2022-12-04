@@ -10,11 +10,12 @@ public class Dirigente extends Profissional {
 	
 	@Override
 	public String toString() {
-		return String.format("%d - %s - %s - %s", 
+		return String.format("%s - %d - %s - %s", 
+				super.toString(),
 				anoInicio, 
 				ehPresidente ? "presidente=sim" : "presidente=N", 
-				contato,
-				super.toString()
+				contato
+				
 				);
 	}
 	public void imprimir() {
@@ -25,6 +26,7 @@ public class Dirigente extends Profissional {
 	
 	
 	public float calcularSalario() {
+		
 		int qtdeAno = 2022 - anoInicio;
 		return qtdeAno * 500 + (ehPresidente ? 7500 : 0);
 	}

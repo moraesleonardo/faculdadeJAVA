@@ -60,7 +60,7 @@ public class TP1 {
 			System.out.println("[3] Consultar todos");
 			System.out.println("[4] Sair");
 			
-			System.out.print("Informe a opção desejada: ");						
+			System.out.print("Informe a opÃ£o desejada: ");						
 			opcao = in.next();
 			
 			switch (opcao) {
@@ -72,10 +72,10 @@ public class TP1 {
 					System.out.print("Informe a sua idade: ");	
 					idades[pos] = in.nextInt();
 	
-					System.out.print("Informe o seu salário: ");	
+					System.out.print("Informe o seu salÃ¡rio: ");	
 					salarios[pos] = in.nextFloat();
 					
-					System.out.print("Informe o seu bônus: ");	
+					System.out.print("Informe o seu bonus: ");	
 					bonus[pos] = in.nextFloat();
 
 					System.out.print("Informe o seu desconto: ");	
@@ -85,18 +85,18 @@ public class TP1 {
 
 					pos++;
 				} else {
-					System.out.println("Impossível realizar um novo cadastramento!");
+					System.out.println("ImpossÃ­vel realizar um novo cadastramento!");
 				}
 				break;
 
 			case "2":
-				System.out.print("Informe o funcionário para impressão: ");						
+				System.out.print("Informe o funcionÃ¡rio para impressÃ£o: ");						
 				int id = in.nextInt();
 
 				if(id >= 0 && id < pos) {
 					imprimir(id);
 				} else {
-					System.out.println("O índice ["+id+"] é inválido!!!");
+					System.out.println("O Ã­ndice ["+id+"] Ã© invÃ¡lido!!!");
 				}
 				break;
 
@@ -105,11 +105,11 @@ public class TP1 {
 				break;
 
 			case "4":
-				System.out.println("Saída");
+				System.out.println("SaÃ­da");
 				break;
 
 			default:
-				System.out.println("A opção ["+opcao+"] inválida");
+				System.out.println("A opÃ§Ã£o ["+opcao+"] invÃ¡lida");
 				break;
 			}
 		} while (!"4".equalsIgnoreCase(opcao));

@@ -2,6 +2,10 @@ package br.edu.infnet.app.dominio;
 
 import java.util.List;
 
+import br.edu.infnet.app.exception.ContatoInvalidoException;
+import br.edu.infnet.app.exception.JogadorInvalidoException;
+import br.edu.infnet.app.exception.ProfissionalInvalidoException;
+
 public class Equipe {
 	private String nome;
 	private int anoFundacao;
@@ -37,16 +41,54 @@ public class Equipe {
 	@Override
 	public String toString() {
 		
-		return String.format("%s- %d - %s - %d",
-				nome,
-				anoFundacao,
-				contato,
-				profissionais.size()
-			);
+		return String.format("%s- %d", nome, anoFundacao);
 	}
 	
-	public void imprimir() {
-		System.out.println("Equipe: " + toString());
+	private float calcularFolhaSalarial() throws JogadorInvalidoException {
+		
+		float folhaSalarial = 0;
+		for(Profissional prof : profissionais) {
+			folhaSalarial = folhaSalarial + prof.calcularSalario();
+		}
+		
+		return folhaSalarial;
+	}
+	
+	public String obterLinhaGravacao() throws JogadorInvalidoException {
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.getNome());
+		sb.append(";");
+		sb.append(profissionais.size());
+		sb.append(";");
+		sb.append(this.calcularFolhaSalarial());
+		sb.append(";");
+		sb.append("\r\n");
+		
+		return sb.toString();
+	}
+	
+	public void imprimir() throws ContatoInvalidoException, ProfissionalInvalidoException {
+		
+		//contato
+		if(contato == null) {
+			throw new ContatoInvalidoException("O contato precisa ser preenchido!");
+		}
+		
+		//profissionais
+		if(profissionais == null ) {
+			throw new ProfissionalInvalidoException("Nenhuma listagem de profissionais foi associada à equipe!");
+		}
+		
+		
+		if(profissionais.size() == 0) {
+			throw new ProfissionalInvalidoException("A listagem não possui profissionais!");
+		}
+		
+		
+		System.out.printf("Equipe: %s - %s - %d\n", 
+				toString(), 
+				contato, 
+				profissionais.size());
 		
 		System.out.println("Profissionais: ");
 		

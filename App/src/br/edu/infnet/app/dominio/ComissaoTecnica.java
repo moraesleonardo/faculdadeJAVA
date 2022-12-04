@@ -27,15 +27,15 @@ public class ComissaoTecnica extends Profissional {
 	
 	public String toString() {
 		return String.format("%s - %d - %s", 
-				ehTreinador ? "treinador=S" : "treinador = N",
+				super.toString(),
 				qtdeTitulo,
-				super.toString()
+				ehTreinador ? "treinador=S" : "treinador = N"				
 				);
 	}
 
 	
 	public void imprimir() {
-		System.out.println("Comissão Técnica: " + toString());
+		System.out.println("Comissï¿½o Tï¿½cnica: " + toString());
 	}
 	
 }

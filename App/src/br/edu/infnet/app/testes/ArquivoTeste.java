@@ -5,8 +5,6 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
-
 import br.edu.infnet.app.dominio.Administrativo;
 import br.edu.infnet.app.dominio.Estagiario;
 import br.edu.infnet.app.dominio.Programador;
@@ -90,7 +88,7 @@ public class ArquivoTeste {
 						
 						break;
 					default:
-						System.out.println("Funcion·rio ainda n„o definido [" + linha + "]");
+						System.out.println("Funcion√°rio ainda n√£o definido [" + linha + "]");
 						break;
 					}
 					

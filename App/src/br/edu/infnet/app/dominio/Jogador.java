@@ -1,12 +1,27 @@
 package br.edu.infnet.app.dominio;
 
+import br.edu.infnet.app.exception.JogadorInvalidoException;
+
 public class Jogador extends Profissional {
 	private int anoNascimento;
 	private int qtdeTituloNacional;
 	private int qtdeTituloInternacional;
 	
 	@Override
-	public float calcularSalario() {
+	public float calcularSalario() throws JogadorInvalidoException{
+		
+		if(qtdeTituloNacional <= 0) {
+			throw new JogadorInvalidoException("É necessário ter a quantidade de títulos nacionais superior a zero");
+		}
+		
+		if(qtdeTituloNacional > 10) {
+			throw new JogadorInvalidoException("É necessário ter a quantidade de títulos nacionais inferior à dez");
+		}
+		
+		if(qtdeTituloInternacional < 0 || qtdeTituloInternacional > 5) {
+			throw new JogadorInvalidoException("É necessário ter a quantidade de títulos internacionais superior a zero e inferior à cinco");
+		}
+		
 		return qtdeTituloNacional * 1000 + qtdeTituloInternacional * 5000;
 	}
 	
@@ -31,15 +46,17 @@ public class Jogador extends Profissional {
 
 	@Override
 	public String toString() {
-		return String.format("%d - %d - %d - %s", 
+		return String.format("%s - %d - %d - %d", 
+				super.toString(),
 				anoNascimento, 
 				qtdeTituloNacional, 
-				qtdeTituloInternacional,
-				super.toString()
+				qtdeTituloInternacional
 				);
 	}
-	public void imprimir() {
+	
+	public void imprimir() throws JogadorInvalidoException{
 		//System.out.println("Nome: " + this.getNome());
+		super.imprimir();
 		System.out.println("Jogador: " + toString());
 	}
 	

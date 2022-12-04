@@ -8,7 +8,7 @@ import br.edu.infnet.app.dominio.Aluno;
 import br.edu.infnet.app.dominio.Pessoa;
 import br.edu.infnet.app.dominio.Professor;
 
-public class TP2_entrega {
+public class TP3_entrega {
 
 	private static Pessoa[] pessoas;
 

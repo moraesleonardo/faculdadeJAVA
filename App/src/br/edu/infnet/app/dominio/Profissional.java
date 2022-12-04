@@ -1,14 +1,24 @@
 package br.edu.infnet.app.dominio;
 
+import br.edu.infnet.app.exception.JogadorInvalidoException;
+
 public abstract class Profissional {
 	
 	private String nome;
 
-	public abstract float calcularSalario();
+	public abstract float calcularSalario() throws JogadorInvalidoException;
 	
 	@Override
 	public String toString() {
-		return String.format("%s - %.2f", nome, calcularSalario());
+		return String.format("%s", nome);
+	}
+	
+	public void imprimir() throws JogadorInvalidoException {
+		System.out.printf("Profissional: %s - %.2f\n", 
+				toString(),
+				calcularSalario()
+				);
+		
 	}
 	
 	public String getNome() {
